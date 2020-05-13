@@ -11,14 +11,17 @@ emcc \
   -s ALLOW_MEMORY_GROWTH=1 \
   -s MODULARIZE=1 \
   -s WASM=1 \
+  -Oz \
+  -flto \
+  --llvm-lto 1 \
+  -s FILESYSTEM=0 \
   -I /lib/mozjpeg \
   -s 'EXPORT_NAME="mozjpeg"' \
-  -s NODERAWFS=1 \
   -Wno-deprecated-register \
   -Wno-writable-strings \
-  -o ./lib/mozjpeg.js \
   -x c++ \
   -std=c++11 \
+  -o ./lib/mozjpeg.js \
   ./src/mozjpeg.cpp \
   /lib/mozjpeg/rdswitch.c \
   /lib/mozjpeg/.libs/libjpeg.a

@@ -1,12 +1,5 @@
 #include <emscripten/bind.h>
 #include <emscripten/val.h>
-#include <stdlib.h>
-#include <inttypes.h>
-#include <stdio.h>
-#include <setjmp.h>
-#include <string.h>
-#include "config.h"
-#include "jpeglib.h"
 #include "cdjpeg.h"
 
 using namespace emscripten;
