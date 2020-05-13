@@ -1,0 +1,13 @@
+# os
+.DS_Store
+
+# editor
+.vscode
+.idea
+
+# node
+node_modules
+npm-debug.log*
+
+# project
+lib
