@@ -1,0 +1,46 @@
+{
+  "name": "@wasm-codecs/mozjpeg",
+  "version": "0.1.0",
+  "description": "MozJPEG image encoder in WebAssembly.",
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "image",
+    "codec",
+    "mozjpeg"
+  ],
+  "author": "Cyril Wanner <info@cyr.li>",
+  "homepage": "https://github.com/cyrilwanner/wasm-image-codecs#readme",
+  "license": "MIT",
+  "scripts": {
+    "build": "npm run build:wasm && npm run build:js && npm run build:types",
+    "prebuild:wasm": "docker build -t cyrilwanner/wasm-codecs-mozjpeg .",
+    "build:wasm": "docker run --rm -v `pwd`:/build cyrilwanner/wasm-codecs-mozjpeg /build/build.sh",
+    "build:js": "babel src --out-dir lib --extensions \".ts\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint": "tsc --noEmit && eslint . --ext .ts --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "eslint": "^7.0.0",
+    "typescript": "^3.9.2"
+  },
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrilwanner/wasm-image-codecs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cyrilwanner/wasm-image-codecs/issues"
+  }
+}
