@@ -101,4 +101,6 @@ const encode = async (image: Buffer, inputInfo: InputInfo, encodeOptions: Encode
 };
 
 export default encode;
+export { ColorSpace } from './colorspace';
+export type { InputInfo, EncodeOptions } from './types';
 module.exports = encode;
