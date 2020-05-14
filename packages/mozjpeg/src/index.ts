@@ -2,23 +2,45 @@ import Module, { MozJPEGModule } from './mozjpeg';
 import { defaultInputInfo, defaultEncodeOptions } from './options';
 import { InputInfo, EncodeOptions } from './types';
 
-let initPromise: Promise<void>;
-let mozjpeg: MozJPEGModule;
+let mozjpeg: MozJPEGModule | null;
+const queue: Array<() => void> = [];
 
 /**
  * Initialize the mozjpeg module
  */
 const initModule = (): Promise<void> => {
-  if (!initPromise) {
-    initPromise = new Promise((resolve) => {
+  return new Promise((resolve) => {
+    // add a new job to the queue
+    queue.push(() => {
       mozjpeg = Module();
       mozjpeg.onRuntimeInitialized = (): void => {
         resolve();
       };
     });
-  }
 
-  return initPromise;
+    // start it if there is no queue
+    if (queue.length === 1) {
+      queue[0]();
+    }
+  });
+};
+
+/**
+ * Resets the mozjpeg module to avoid some wasm related problems
+ * when optimizing many images after each other
+ */
+const resetModule = (): void => {
+  mozjpeg = null;
+
+  if (queue.length > 0) {
+    // remove finished job
+    queue.shift();
+
+    // trigger next job
+    if (queue.length > 0) {
+      queue[0]();
+    }
+  }
 };
 
 /**
@@ -43,6 +65,10 @@ const encode = async (image: Buffer, inputInfo: InputInfo, encodeOptions: Encode
   // wait for the wasm module to be ready
   await initModule();
 
+  if (!mozjpeg) {
+    throw new Error('MozJPEG Module could not be initialized');
+  }
+
   // encode the image and get a pointer to the result
   const resultPointer = mozjpeg.encode(
     image,
@@ -57,6 +83,7 @@ const encode = async (image: Buffer, inputInfo: InputInfo, encodeOptions: Encode
 
   // free used memory
   mozjpeg.freeImage(resultPointer);
+  resetModule();
 
   return Buffer.from(result);
 };

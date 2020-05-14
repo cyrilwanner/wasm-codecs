@@ -17,6 +17,7 @@ emcc \
   -s FILESYSTEM=0 \
   -I /lib/mozjpeg \
   -s 'EXPORT_NAME="mozjpeg"' \
+  -Werror \
   -Wno-deprecated-register \
   -Wno-writable-strings \
   -x c++ \
