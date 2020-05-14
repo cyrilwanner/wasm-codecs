@@ -1,4 +1,4 @@
-import { ColorSpace } from '../lib/types';
+import { ColorSpace } from './colorspace';
 
 export type InputInfo = {
   width: number;
