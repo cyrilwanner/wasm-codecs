@@ -1,4 +1,5 @@
-import { InputInfo, EncodeOptions, ColorSpace } from './types';
+import { InputInfo, EncodeOptions } from './types';
+import { ColorSpace } from './colorspace';
 
 export const defaultInputInfo: Required<InputInfo> = {
   width: 0,

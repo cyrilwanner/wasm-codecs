@@ -1,6 +1,7 @@
 import Module, { MozJPEGModule } from './mozjpeg';
 import { defaultInputInfo, defaultEncodeOptions } from './options';
 import { InputInfo, EncodeOptions } from './types';
+import { isGrayscale, ColorSpace } from './colorspace';
 
 let mozjpeg: MozJPEGModule | null;
 const queue: Array<() => void> = [];
@@ -52,40 +53,51 @@ const resetModule = (): void => {
  * @returns {Buffer} Processed image buffer
  */
 const encode = async (image: Buffer, inputInfo: InputInfo, encodeOptions: EncodeOptions = {}): Promise<Buffer> => {
-  // merge default configs
-  const filledInputInfo = { ...defaultInputInfo, ...inputInfo };
-  const filledEncodeOptions = { ...defaultEncodeOptions, ...encodeOptions };
+  try {
+    // merge default configs
+    const filledInputInfo = { ...defaultInputInfo, ...inputInfo };
+    const filledEncodeOptions = { ...defaultEncodeOptions, ...encodeOptions };
 
-  if (filledInputInfo.width < 1 || filledInputInfo.height < 1) {
-    throw new Error(`Invalid input image size: ${filledInputInfo.width}x${filledInputInfo.height}`);
-  } else if (filledInputInfo.channels < 1 || filledInputInfo.channels > 4) {
-    throw new Error(`Invalid input channels: ${filledInputInfo.channels}`);
+    if (filledInputInfo.width < 1 || filledInputInfo.height < 1) {
+      throw new Error(`Invalid input image size: ${filledInputInfo.width}x${filledInputInfo.height}`);
+    } else if (filledInputInfo.channels < 1 || filledInputInfo.channels > 4) {
+      throw new Error(`Invalid input channels: ${filledInputInfo.channels}`);
+    }
+
+    // wait for the wasm module to be ready
+    await initModule();
+
+    if (!mozjpeg) {
+      throw new Error('MozJPEG Module could not be initialized');
+    }
+
+    // check if it is a grayscale image and preserve it if so
+    if (
+      typeof encodeOptions.colorSpace === 'undefined' &&
+      (inputInfo.channels === 1 || isGrayscale(image, filledInputInfo.channels))
+    ) {
+      filledEncodeOptions.colorSpace = ColorSpace.GRAYSCALE;
+    }
+
+    // encode the image and get a pointer to the result
+    const resultPointer = mozjpeg.encode(
+      image,
+      filledInputInfo.width,
+      filledInputInfo.height,
+      filledInputInfo.channels,
+      filledEncodeOptions,
+    );
+
+    // copy the image from wasm into the js environment
+    const result = mozjpeg.getImage(resultPointer);
+
+    // free used memory
+    mozjpeg.freeImage(resultPointer);
+
+    return Buffer.from(result);
+  } finally {
+    resetModule();
   }
-
-  // wait for the wasm module to be ready
-  await initModule();
-
-  if (!mozjpeg) {
-    throw new Error('MozJPEG Module could not be initialized');
-  }
-
-  // encode the image and get a pointer to the result
-  const resultPointer = mozjpeg.encode(
-    image,
-    filledInputInfo.width,
-    filledInputInfo.height,
-    filledInputInfo.channels,
-    filledEncodeOptions,
-  );
-
-  // copy the image from wasm into the js environment
-  const result = mozjpeg.getImage(resultPointer);
-
-  // free used memory
-  mozjpeg.freeImage(resultPointer);
-  resetModule();
-
-  return Buffer.from(result);
 };
 
 export default encode;

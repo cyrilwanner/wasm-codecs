@@ -15,6 +15,9 @@
 npm install @wasm-codecs/mozjpeg
 ```
 
+**Requirements:**
+- Node.js 10 or later
+
 ## Usage
 
 ```typescript
@@ -38,7 +41,7 @@ A raw RGB image input buffer.
 ##### `inputInfo: InputInfo`
 
 Those are required informations about the raw input image.
-Channels specifies the amount of channels in the input image and defaults to `3` (RGB).
+Channels specifies the amount of channels in the `image: Buffer` param and defaults to `3` (RGB).
 
 ```typescript
 type InputInfo = {

@@ -1,17 +1,10 @@
+import { ColorSpace } from '../lib/types';
+
 export type InputInfo = {
   width: number;
   height: number;
   channels?: number;
 };
-
-export enum ColorSpace {
-  UNKNOWN,
-  GRAYSCALE,
-  RGB,
-  YCbCr,
-  CMYK,
-  YCCK,
-}
 
 export type EncodeOptions = {
   quality?: number;
