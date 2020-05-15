@@ -1,7 +1,7 @@
 {
   "name": "@wasm-codecs/mozjpeg",
   "version": "0.1.0",
-  "description": "MozJPEG image encoder in WebAssembly.",
+  "description": "MozJPEG image encoder in WebAssembly",
   "keywords": [
     "wasm",
     "webassembly",
@@ -10,7 +10,7 @@
     "mozjpeg"
   ],
   "author": "Cyril Wanner <info@cyr.li>",
-  "homepage": "https://github.com/cyrilwanner/wasm-image-codecs#readme",
+  "homepage": "https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg#readme",
   "license": "MIT",
   "scripts": {
     "build": "npm run build:wasm && npm run build:js && npm run build:types",
@@ -44,9 +44,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cyrilwanner/wasm-image-codecs.git"
+    "url": "git+https://github.com/cyrilwanner/wasm-codecs.git"
   },
   "bugs": {
-    "url": "https://github.com/cyrilwanner/wasm-image-codecs/issues"
+    "url": "https://github.com/cyrilwanner/wasm-codecs/issues"
   }
 }
