@@ -7,6 +7,7 @@ Most of the codecs are improved versions and based on work done by the [Squoosh]
 ## Packages
 
 - **[`@wasm-codecs/mozjpeg`](packages/mozjpeg)**
+- **[`@wasm-codecs/oxipng`](packages/oxipng)**
 
 ## License
 
