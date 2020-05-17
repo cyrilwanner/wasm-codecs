@@ -31,6 +31,7 @@ describe('mozjpeg', () => {
       expect(metadata.width).toBe(width);
       expect(metadata.height).toBe(height);
       expect(metadata.channels).toBe(3);
+      expect(metadata.isProgressive).toBe(true);
     });
   });
 
@@ -107,5 +108,31 @@ describe('mozjpeg', () => {
     expect(metadata.width).toBe(width);
     expect(metadata.height).toBe(height);
     expect(metadata.channels).toBe(1);
+  });
+
+  it('uses baseline if progressive is disabled', async () => {
+    const {
+      data,
+      info: { width, height, channels },
+    } = await getRawImage('images/medium.jpg');
+    const originalSize = getFileSize('images/medium.jpg');
+    const originalMetadata = await getImageMetadata('images/medium.jpg');
+    expect(originalMetadata.channels).toBe(3);
+
+    const result = await encode(data, { width, height, channels }, { progressive: false });
+    const encodedPath = writeTmpBuffer(result, 'medium-baseline.jpg');
+    const encodedSize = getFileSize(encodedPath);
+
+    // expect the image size to be between 1/4 and 3/4 of the original image
+    expect(encodedSize).toBeLessThan(originalSize * 0.75);
+    expect(encodedSize).toBeGreaterThan(originalSize * 0.25);
+
+    // check if the image is still a valid jpeg image
+    const metadata = await getImageMetadata(encodedPath);
+    expect(metadata.format).toBe('jpeg');
+    expect(metadata.width).toBe(width);
+    expect(metadata.height).toBe(height);
+    expect(metadata.channels).toBe(3);
+    expect(metadata.isProgressive).toBe(false);
   });
 });
