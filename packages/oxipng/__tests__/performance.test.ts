@@ -1,12 +1,10 @@
-import { initTestUtils, getFileSize, getImageMetadata, cleanup, getImage } from '@wasm-codecs/test-utils';
+import { initTestUtils, getFileSize, getImageMetadata, getImage } from '@wasm-codecs/test-utils';
 import encode from '../lib';
 
 describe('oxipng performance', () => {
   beforeAll(() => {
     initTestUtils(__dirname);
   });
-
-  // afterAll(cleanup);
 
   it('encodes many images', async () => {
     jest.setTimeout(60000);

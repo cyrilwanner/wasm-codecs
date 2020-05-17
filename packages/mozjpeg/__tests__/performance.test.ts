@@ -1,12 +1,10 @@
-import { initTestUtils, getRawImage, getFileSize, getImageMetadata, cleanup } from '@wasm-codecs/test-utils';
+import { initTestUtils, getRawImage, getFileSize, getImageMetadata } from '@wasm-codecs/test-utils';
 import encode from '../lib';
 
 describe('mozjpeg performance', () => {
   beforeAll(() => {
     initTestUtils(__dirname);
   });
-
-  afterAll(cleanup);
 
   it('encodes many images', async () => {
     jest.setTimeout(60000);
