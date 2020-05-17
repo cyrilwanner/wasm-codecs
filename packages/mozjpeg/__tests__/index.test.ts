@@ -1,9 +1,19 @@
-import { cleanup, getRawImage, writeTmpBuffer, getFileSize, getImageMetadata } from './util';
+import {
+  initTestUtils,
+  cleanup,
+  getRawImage,
+  writeTmpBuffer,
+  getFileSize,
+  getImageMetadata,
+} from '@wasm-codecs/test-utils';
 import encode from '../lib';
 import { ColorSpace } from '../lib/colorspace';
 
 describe('mozjpeg', () => {
-  beforeAll(cleanup);
+  beforeAll(() => {
+    initTestUtils(__dirname);
+  });
+
   afterAll(cleanup);
 
   // test all image sizes

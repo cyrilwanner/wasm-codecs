@@ -1,8 +1,14 @@
-import { getRawImage, getFileSize, getImageMetadata } from './util';
+import { initTestUtils, getRawImage, getFileSize, getImageMetadata, cleanup } from '@wasm-codecs/test-utils';
 import encode from '../lib';
 import { ColorSpace } from '../lib/colorspace';
 
 describe('mozjpeg performance', () => {
+  beforeAll(() => {
+    initTestUtils(__dirname);
+  });
+
+  afterAll(cleanup);
+
   it('encodes many images', async () => {
     jest.setTimeout(60000);
     process.setMaxListeners(0);

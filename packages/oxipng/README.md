@@ -8,6 +8,7 @@
 1. [Usage](#usage)
 1. [API](#api)
 1. [Examples](#examples)
+1. [License](#license)
 
 ## Installation
 

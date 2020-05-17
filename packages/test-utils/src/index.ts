@@ -3,7 +3,29 @@ import fs from 'fs';
 import sharp, { OutputInfo, Metadata } from 'sharp';
 import rimraf from 'rimraf';
 
-const tmpFolder = path.resolve(__dirname, 'tmp');
+let basePath: string;
+let tmpFolder: string;
+
+/**
+ * Initializes the test utils
+ *
+ * @param {string} nextBasePath Base path of the tests
+ */
+export const initTestUtils = (nextBasePath: string): void => {
+  basePath = nextBasePath;
+  tmpFolder = path.resolve(basePath, 'tmp');
+  cleanup();
+};
+
+/**
+ * Load image data from a file
+ *
+ * @param {string} fileName Image file name
+ * @returns {Promise<{ data: Buffer; info: OutputInfo }>} Image data
+ */
+export const getImage = async (fileName: string): Promise<{ data: Buffer; info: OutputInfo }> => {
+  return sharp(path.resolve(basePath, fileName)).toBuffer({ resolveWithObject: true });
+};
 
 /**
  * Load raw image data from a file
@@ -12,7 +34,7 @@ const tmpFolder = path.resolve(__dirname, 'tmp');
  * @returns {Promise<{ data: Buffer; info: OutputInfo }} Raw image data
  */
 export const getRawImage = async (fileName: string): Promise<{ data: Buffer; info: OutputInfo }> => {
-  return sharp(path.resolve(__dirname, fileName)).raw().toBuffer({ resolveWithObject: true });
+  return sharp(path.resolve(basePath, fileName)).raw().toBuffer({ resolveWithObject: true });
 };
 
 /**
@@ -22,7 +44,7 @@ export const getRawImage = async (fileName: string): Promise<{ data: Buffer; inf
  * @returns {Promise<Metadata>} Image metadata
  */
 export const getImageMetadata = async (fileName: string): Promise<Metadata> => {
-  return sharp(path.resolve(__dirname, fileName)).metadata();
+  return sharp(path.resolve(basePath, fileName)).metadata();
 };
 
 /**
@@ -32,7 +54,7 @@ export const getImageMetadata = async (fileName: string): Promise<Metadata> => {
  * @returns {number} File size in bytes
  */
 export const getFileSize = (fileName: string): number => {
-  return fs.statSync(path.resolve(__dirname, fileName)).size;
+  return fs.statSync(path.resolve(basePath, fileName)).size;
 };
 
 /**
@@ -50,7 +72,7 @@ export const cleanup = (): void => {
  * @returns {string} Path of the temporary file
  */
 export const writeTmpBuffer = (data: Buffer, fileName: string): string => {
-  const outputPath = path.resolve(__dirname, 'tmp', fileName);
+  const outputPath = path.resolve(tmpFolder, fileName);
 
   if (!fs.existsSync(tmpFolder)) {
     fs.mkdirSync(tmpFolder);
