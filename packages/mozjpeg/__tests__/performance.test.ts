@@ -1,6 +1,5 @@
 import { initTestUtils, getRawImage, getFileSize, getImageMetadata, cleanup } from '@wasm-codecs/test-utils';
 import encode from '../lib';
-import { ColorSpace } from '../lib/colorspace';
 
 describe('mozjpeg performance', () => {
   beforeAll(() => {
@@ -23,7 +22,7 @@ describe('mozjpeg performance', () => {
 
     const promises = [];
     for (let i = 0; i < 30; i += 1) {
-      promises.push(encode(data, { width, height, channels }, { colorSpace: ColorSpace.GRAYSCALE }));
+      promises.push(encode(data, { width, height, channels }));
     }
 
     const results = await Promise.all(promises);
