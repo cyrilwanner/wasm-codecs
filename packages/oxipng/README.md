@@ -24,17 +24,47 @@ npm install @wasm-codecs/oxipng
 import encode from '@wasm-codecs/oxipng';
 
 (async () => {
-  const encodedImage = await encode(image, inputInfo, encodeOptions);
+  const encodedImage = await encode(image, encodeOptions);
 })();
 ```
 
 ## API
 
-> Todo
+### `encode(image, encodeOptions?): Buffer`
+
+Returns a buffer containing the compressed image data.
+
+##### `image: Buffer`
+
+Buffer of a PNG image.
+
+##### `encodeOptions?: EncodeOptions`
+
+All encoding options are optional and fall back to the [default values](https://github.com/cyrilwanner/wasm-codecs/blob/master/packages/oxipng/src/options.ts#L3-L5).
+
+```typescript
+type EncodeOptions = {
+  level?: number;
+}
+```
 
 ## Examples
 
-> Todo
+### Using Node.js
+
+```typescript
+import fs from 'fs';
+import encode from '@wasm-codecs/oxipng';
+
+// read input image as a buffer
+const data = fs.readFileSync('in.png');
+
+// encode the image using @wasm-codecs/oxipng
+const output = encode(data);
+
+// save the image to the file system
+fs.writeFileSync('out.png', output);
+```
 
 ## License
 

@@ -2,10 +2,11 @@
 
 set -e
 
-echo "Building wasm-codec-mozjpeg.."
 cd /build
 rm -rf ./lib
 mkdir ./lib
+
+echo "Building wasm-codecs-mozjpeg.."
 emcc \
   --bind \
   -s ALLOW_MEMORY_GROWTH=1 \

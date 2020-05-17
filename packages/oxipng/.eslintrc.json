@@ -2,7 +2,7 @@
   "extends": "../../.eslintrc.json",
   "rules": {
     "import/no-unresolved": ["error", {
-      "ignore": ["/optipng$"]
+      "ignore": ["/oxipng$"]
     }]
   }
 }

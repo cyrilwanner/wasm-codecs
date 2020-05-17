@@ -13,7 +13,15 @@
   "homepage": "https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/oxipng#readme",
   "license": "MIT",
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "build": "npm run build:wasm && npm run build:js && npm run build:types",
+    "prebuild:wasm": "docker build -t cyrilwanner/wasm-codecs-oxipng .",
+    "build:wasm": "docker run --rm -v `pwd`:/build cyrilwanner/wasm-codecs-oxipng /build/build.sh",
+    "build:js": "babel src --out-dir lib --extensions \".ts\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint": "tsc --noEmit && eslint . --ext .ts --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest",
+    "test:watch": "npm test -- --watch"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
