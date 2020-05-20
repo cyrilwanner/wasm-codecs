@@ -2,6 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "build": "lerna run build --parallel",
+    "lint": "lerna run lint --parallel",
+    "test": "lerna run test --parallel",
     "postinstall": "lerna bootstrap",
     "lerna": "lerna"
   },

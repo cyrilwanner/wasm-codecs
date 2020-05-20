@@ -3,8 +3,6 @@
 set -e
 
 cd /build
-rm -rf ./lib
-mkdir ./lib
 
 echo "Building wasm-codecs-oxipng.."
 wasm-pack build --target nodejs --out-name oxipng

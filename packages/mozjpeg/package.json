@@ -13,6 +13,7 @@
   "homepage": "https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/mozjpeg#readme",
   "license": "MIT",
   "scripts": {
+    "prebuild": "rimraf lib && mkdirp lib",
     "build": "npm run build:wasm && npm run build:js && npm run build:types",
     "prebuild:wasm": "docker build -t cyrilwanner/wasm-codecs-mozjpeg .",
     "build:wasm": "docker run --rm -v `pwd`:/build cyrilwanner/wasm-codecs-mozjpeg /build/build.sh",
@@ -29,6 +30,8 @@
     "@wasm-codecs/test-utils": "^0.1.0",
     "eslint": "^7.0.0",
     "jest": "^26.0.1",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
     "typescript": "^3.9.2"
   },
   "main": "lib/index.js",
