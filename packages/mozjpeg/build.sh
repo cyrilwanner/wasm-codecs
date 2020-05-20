@@ -3,8 +3,6 @@
 set -e
 
 cd /build
-rm -rf ./lib
-mkdir ./lib
 
 echo "Building wasm-codecs-mozjpeg.."
 emcc \
