@@ -48,5 +48,8 @@
   },
   "bugs": {
     "url": "https://github.com/cyrilwanner/wasm-codecs/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
