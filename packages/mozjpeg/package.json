@@ -1,6 +1,6 @@
 {
   "name": "@wasm-codecs/mozjpeg",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "MozJPEG image encoder in WebAssembly",
   "keywords": [
     "wasm",
@@ -27,7 +27,7 @@
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
-    "@wasm-codecs/test-utils": "^0.1.0",
+    "@wasm-codecs/test-utils": "^1.0.0",
     "eslint": "^7.0.0",
     "jest": "^26.0.1",
     "mkdirp": "^1.0.4",
