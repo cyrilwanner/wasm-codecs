@@ -1,0 +1,37 @@
+version: 2
+updates:
+  # project root
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+
+  # mozjpeg
+  - package-ecosystem: "npm"
+    directory: "/packages/mozjpeg/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/packages/mozjpeg/"
+    schedule:
+      interval: "weekly"
+
+  # oxipng
+  - package-ecosystem: "npm"
+    directory: "/packages/oxipng/"
+    schedule:
+      interval: "weekly"
+  - package-ecosystem: "docker"
+    directory: "/packages/oxipng/"
+    schedule:
+      interval: "weekly"
+
+  # test-utils
+  - package-ecosystem: "npm"
+    directory: "/packages/test-utils/"
+    schedule:
+      interval: "weekly"
