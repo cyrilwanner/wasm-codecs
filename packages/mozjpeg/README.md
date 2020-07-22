@@ -1,4 +1,4 @@
-# `@wasm-codecs/mozjpeg`
+# `@wasm-codecs/mozjpeg` [![npm version](https://badgen.net/npm/v/@wasm-codecs/mozjpeg)](https://www.npmjs.com/package/@wasm-codecs/mozjpeg) [![license](https://badgen.net/github/license/cyrilwanner/wasm-codecs)](https://github.com/cyrilwanner/wasm-codecs/blob/master/LICENSE) [![downloads](https://badgen.net/npm/dt/@wasm-codecs/mozjpeg)](https://www.npmjs.com/package/@wasm-codecs/mozjpeg)
 
 > MozJPEG WebAssembly Codec
 

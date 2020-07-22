@@ -1,4 +1,4 @@
-# `@wasm-codecs/oxipng`
+# `@wasm-codecs/oxipng` [![npm version](https://badgen.net/npm/v/@wasm-codecs/oxipng)](https://www.npmjs.com/package/@wasm-codecs/oxipng) [![license](https://badgen.net/github/license/cyrilwanner/wasm-codecs)](https://github.com/cyrilwanner/wasm-codecs/blob/master/LICENSE) [![downloads](https://badgen.net/npm/dt/@wasm-codecs/oxipng)](https://www.npmjs.com/package/@wasm-codecs/oxipng)
 
 > Oxipng WebAssembly Codec
 
