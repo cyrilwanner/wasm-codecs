@@ -7,7 +7,7 @@ describe('oxipng performance', () => {
   });
 
   it('encodes many images', async () => {
-    jest.setTimeout(600000);
+    jest.setTimeout(60000);
     process.setMaxListeners(0);
 
     const { data } = await getImage('images/small.png');

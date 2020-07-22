@@ -7,7 +7,7 @@ describe('mozjpeg performance', () => {
   });
 
   it('encodes many images', async () => {
-    jest.setTimeout(600000);
+    jest.setTimeout(60000);
     process.setMaxListeners(0);
 
     const {
