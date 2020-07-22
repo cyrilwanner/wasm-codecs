@@ -19,8 +19,6 @@ describe('mozjpeg', () => {
   // test all image sizes
   ['tiny', 'small', 'medium', 'large'].forEach((size) => {
     it(`encodes a ${size} image`, async () => {
-      jest.setTimeout(60000);
-
       const {
         data,
         info: { width, height, channels },
