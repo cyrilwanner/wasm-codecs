@@ -13,10 +13,13 @@ const initModule = (): Promise<void> => {
   return new Promise((resolve) => {
     // add a new job to the queue
     queue.push(() => {
-      mozjpeg = Module();
-      mozjpeg.onRuntimeInitialized = (): void => {
-        resolve();
-      };
+      Module({
+        onRuntimeInitialized: () => {
+          resolve();
+        },
+      }).then((instance) => {
+        mozjpeg = instance;
+      });
     });
 
     // start it if there is no queue

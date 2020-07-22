@@ -12,7 +12,6 @@ emcc \
   -s WASM=1 \
   -Oz \
   -flto \
-  --llvm-lto 1 \
   -s FILESYSTEM=0 \
   -I /lib/mozjpeg \
   -s 'EXPORT_NAME="mozjpeg"' \
