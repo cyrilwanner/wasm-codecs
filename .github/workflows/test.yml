@@ -25,6 +25,8 @@ jobs:
       run: npm ci
     - name: Build
       run: npm run build
+    - name: Setup tmate session
+      uses: mxschmitt/action-tmate@v2
     - name: Test
       run: npm test
     - name: Lint
