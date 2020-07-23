@@ -2,7 +2,7 @@ name: CI
 
 on:
   push:
-    branches: [ master, feature/fix-ci ]
+    branches: [ master ]
   pull_request:
     branches: [ master ]
 
@@ -29,8 +29,3 @@ jobs:
       run: npm test
     - name: Lint
       run: npm run lint
-    - name: Bundlewatch
-      run: npm run bundlewatch
-      if: matrix.node-version == '14.x'
-      env:
-        BUNDLEWATCH_GITHUB_TOKEN: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
