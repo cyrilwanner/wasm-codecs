@@ -16,7 +16,7 @@ jobs:
         run: npm ci
       - name: Build
         run: npm run build
-      - uses: cyrilwanner/bundlewatch-comment-action@v0.1.0
+      - uses: cyrilwanner/bundlewatch-comment-action@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           bundlewatch-github-token: ${{ secrets.BUNDLEWATCH_GITHUB_TOKEN }}
