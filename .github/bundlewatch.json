@@ -1,0 +1,10 @@
+{
+  "files": [
+    {
+      "path": "./packages/mozjpeg/lib/**/*.*"
+    },
+    {
+      "path": "./packages/oxipng/lib/**/*.*"
+    }
+  ]
+}
