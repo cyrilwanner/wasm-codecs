@@ -6,7 +6,8 @@
     "lint": "lerna run lint --parallel",
     "test": "lerna run test --parallel",
     "postinstall": "lerna bootstrap",
-    "lerna": "lerna"
+    "lerna": "lerna",
+    "bundlewatch": "bundlewatch --config .github/bundlewatch.json"
   },
   "dependencies": {},
   "devDependencies": {
@@ -17,6 +18,7 @@
     "@types/jest": "^25.2.2",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
+    "bundlewatch": "^0.2.7",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.11.0",
