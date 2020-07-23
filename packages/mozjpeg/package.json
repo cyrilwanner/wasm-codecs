@@ -22,7 +22,8 @@
     "lint": "tsc --noEmit && eslint . --ext .ts --ext .js",
     "lint:fix": "npm run lint -- --fix",
     "test": "jest",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "test:sizes": "KEEP_IMAGE_OUTPUT=true jest --testPathIgnorePatterns '.*performance.*'"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

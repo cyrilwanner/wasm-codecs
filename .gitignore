@@ -13,4 +13,5 @@ lerna-debug.log*
 # project
 lib
 tmp
+out
 target

@@ -45,9 +45,13 @@ Initializes the test utils by configuring internal paths.
 
 Path to the test root.
 
-### `cleanup(): void`
+### `cleanup(force?): void`
 
 Cleans up tests by removing temporary files and directories.
+
+##### `force?: boolean`
+
+If true, will forcefully remove the tmp directory, even if the `KEEP_IMAGE_OUTPUT` env variable is set.
 
 ### `async getImage(fileName): { data: Buffer; info: OutputInfo }`
 

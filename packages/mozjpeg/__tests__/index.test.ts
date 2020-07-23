@@ -14,7 +14,7 @@ describe('mozjpeg', () => {
     initTestUtils(__dirname);
   });
 
-  afterAll(cleanup);
+  afterAll(() => cleanup());
 
   // test all image sizes
   ['tiny', 'small', 'medium', 'large'].forEach((size) => {

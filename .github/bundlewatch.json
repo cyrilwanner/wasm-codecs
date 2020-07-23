@@ -6,6 +6,10 @@
     },
     {
       "path": "./packages/*/lib/**/*.!(wasm)"
+    },
+    {
+      "path": "./packages/*/__tests__/out/**/*.*",
+      "compression": "none"
     }
   ]
 }
