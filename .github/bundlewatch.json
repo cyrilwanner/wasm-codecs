@@ -1,10 +1,11 @@
 {
   "files": [
     {
-      "path": "./packages/mozjpeg/lib/**/*.*"
+      "path": "./packages/*/lib/**/*.wasm",
+      "compression": "none"
     },
     {
-      "path": "./packages/oxipng/lib/**/*.*"
+      "path": "./packages/*/lib/**/*.!(wasm)"
     }
   ]
 }
