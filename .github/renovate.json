@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "rangeStrategy": "replace",
+  "vulnerabilityAlerts": {
+    "enabled": false
+  }
+}
