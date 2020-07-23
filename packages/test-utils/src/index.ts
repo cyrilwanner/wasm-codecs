@@ -3,6 +3,7 @@ import fs from 'fs';
 import sharp, { OutputInfo, Metadata } from 'sharp';
 import rimraf from 'rimraf';
 
+const keepImageOutput = process.env.KEEP_IMAGE_OUTPUT === 'true';
 let basePath: string;
 let tmpFolder: string;
 
@@ -13,8 +14,8 @@ let tmpFolder: string;
  */
 export const initTestUtils = (nextBasePath: string): void => {
   basePath = nextBasePath;
-  tmpFolder = path.resolve(basePath, 'tmp');
-  cleanup();
+  tmpFolder = path.resolve(basePath, keepImageOutput ? 'out' : 'tmp');
+  cleanup(true);
 };
 
 /**
@@ -60,8 +61,10 @@ export const getFileSize = (fileName: string): number => {
 /**
  * Cleans up after the test
  */
-export const cleanup = (): void => {
-  rimraf.sync(tmpFolder);
+export const cleanup = (force = false): void => {
+  if (!keepImageOutput || force) {
+    rimraf.sync(tmpFolder);
+  }
 };
 
 /**
@@ -80,5 +83,5 @@ export const writeTmpBuffer = (data: Buffer, fileName: string): string => {
 
   fs.writeFileSync(outputPath, data);
 
-  return `tmp/${fileName}`;
+  return `${keepImageOutput ? 'out' : 'tmp'}/${fileName}`;
 };
