@@ -2,11 +2,11 @@ on:
   pull_request:
     types: [ opened, synchronize ]
 
-name: Generate Pull Request Stats
+name: PR Stats
 
 jobs:
   stats:
-    name: PR Stats
+    name: Generate Pull Request Stats
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
