@@ -1,12 +1,14 @@
 on:
+  push:
+    branches: [ master ]
   pull_request:
     types: [ opened, synchronize ]
 
-name: PR Stats
+name: Stats
 
 jobs:
   stats:
-    name: Generate Pull Request Stats
+    name: Generate Stats
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
