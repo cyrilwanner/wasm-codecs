@@ -8,6 +8,15 @@ let basePath: string;
 let tmpFolder: string;
 
 /**
+ * Cleans up after the test
+ */
+export const cleanup = (force = false): void => {
+  if (!keepImageOutput || force) {
+    rimraf.sync(tmpFolder);
+  }
+};
+
+/**
  * Initializes the test utils
  *
  * @param {string} nextBasePath Base path of the tests
@@ -56,15 +65,6 @@ export const getImageMetadata = async (fileName: string): Promise<Metadata> => {
  */
 export const getFileSize = (fileName: string): number => {
   return fs.statSync(path.resolve(basePath, fileName)).size;
-};
-
-/**
- * Cleans up after the test
- */
-export const cleanup = (force = false): void => {
-  if (!keepImageOutput || force) {
-    rimraf.sync(tmpFolder);
-  }
 };
 
 /**
