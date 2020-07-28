@@ -4,4 +4,4 @@ export interface MozJPEGModule extends EmscriptenModule {
   freeImage(imagePointer: number): void;
 }
 
-export default function(mozjpeg: { onRuntimeInitialized: () => void }): MozJPEGModule;
+export default function(mozjpeg: { onRuntimeInitialized: () => void }): Promise<MozJPEGModule>;
