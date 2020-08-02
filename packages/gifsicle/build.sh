@@ -23,4 +23,7 @@ emcc \
   -s ALLOW_MEMORY_GROWTH=1 \
   -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
   --pre-js lib/pre.js \
+  -s WASM=1 \
+  -Oz \
+  -flto \
   -o ./lib/gifsicle.js
