@@ -68,9 +68,9 @@ const encode = async (image: Buffer, encodeOptions: EncodeOptions = {}): Promise
       typeof filledEncodeOptions.colors === 'number' ? `--colors=${filledEncodeOptions.colors}` : false,
 
       // resize image
-      filledEncodeOptions.width || filledEncodeOptions.height
-        ? `--resize ${filledEncodeOptions.width || '_'}x${filledEncodeOptions.height || '_'}`
-        : false,
+      ...(filledEncodeOptions.width || filledEncodeOptions.height
+        ? ['--resize', `${filledEncodeOptions.width || '_'}x${filledEncodeOptions.height || '_'}`]
+        : []),
 
       // set input & output file names
       '-i',
