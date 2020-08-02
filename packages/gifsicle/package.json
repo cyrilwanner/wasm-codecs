@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "prebuild": "rimraf lib && mkdirp lib",
-    "build": "npm run build:wasm && npm run build:js && npm run build:types",
+    "build": "npm run build:js && npm run build:wasm && npm run build:types",
     "prebuild:wasm": "docker build -t cyrilwanner/wasm-codecs-gifsicle .",
     "build:wasm": "docker run --rm -v `pwd`:/build cyrilwanner/wasm-codecs-gifsicle /build/build.sh",
     "build:js": "babel src --out-dir lib --extensions \".ts\"",
