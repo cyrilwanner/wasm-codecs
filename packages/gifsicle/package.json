@@ -30,6 +30,7 @@
     "@babel/core": "^7.10.5",
     "@wasm-codecs/test-utils": "^1.0.0",
     "eslint": "^7.5.0",
+    "gif-info": "^1.0.1",
     "jest": "^26.1.0",
     "mkdirp": "^1.0.4",
     "rimraf": "^3.0.2",

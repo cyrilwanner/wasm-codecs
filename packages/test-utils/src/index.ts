@@ -38,6 +38,16 @@ export const getImage = async (fileName: string): Promise<{ data: Buffer; info: 
 };
 
 /**
+ * Load image data from a file without sharp
+ *
+ * @param {string} fileName Image file name
+ * @returns {Buffer} Image data
+ */
+export const getImageFile = (fileName: string): Buffer => {
+  return fs.readFileSync(path.resolve(basePath, fileName));
+};
+
+/**
  * Load raw image data from a file
  *
  * @param {string} fileName Image file name
