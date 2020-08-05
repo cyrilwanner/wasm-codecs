@@ -10,7 +10,7 @@ Currently, only Node.js builds are published. Browser builds will be supported a
 
 - **[`@wasm-codecs/mozjpeg`](packages/mozjpeg)**
 - **[`@wasm-codecs/oxipng`](packages/oxipng)**
-- `@wasm-codecs/gifsicle` (*coming soon*)
+- **[`@wasm-codecs/gifsicle`](packages/gifsicle)**
 - `@wasm-codecs/webp` (*coming soon*)
 
 ## License

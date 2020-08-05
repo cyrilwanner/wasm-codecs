@@ -1,0 +1,57 @@
+{
+  "name": "@wasm-codecs/gifsicle",
+  "version": "0.1.0",
+  "description": "Gifsicle codec in WebAssembly.",
+  "keywords": [
+    "wasm",
+    "webassembly",
+    "image",
+    "codec",
+    "gifsicle"
+  ],
+  "author": "Cyril Wanner <info@cyr.li>",
+  "homepage": "https://github.com/cyrilwanner/wasm-codecs/tree/master/packages/gifsicle#readme",
+  "license": "MIT",
+  "scripts": {
+    "prebuild": "rimraf lib && mkdirp lib",
+    "build": "npm run build:js && npm run build:wasm && npm run build:types",
+    "prebuild:wasm": "docker build -t cyrilwanner/wasm-codecs-gifsicle .",
+    "build:wasm": "docker run --rm -v `pwd`:/build cyrilwanner/wasm-codecs-gifsicle /build/build.sh",
+    "build:js": "babel src --out-dir lib --extensions \".ts\"",
+    "build:types": "tsc --emitDeclarationOnly",
+    "lint": "tsc --noEmit && eslint . --ext .ts --ext .js",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "test:sizes": "KEEP_IMAGE_OUTPUT=true jest --testPathIgnorePatterns '.*performance.*'"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.10.5",
+    "@wasm-codecs/test-utils": "^1.0.0",
+    "eslint": "^7.5.0",
+    "gif-info": "^1.0.1",
+    "jest": "^26.1.0",
+    "mkdirp": "^1.0.4",
+    "rimraf": "^3.0.2",
+    "typescript": "^3.9.7"
+  },
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cyrilwanner/wasm-codecs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cyrilwanner/wasm-codecs/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

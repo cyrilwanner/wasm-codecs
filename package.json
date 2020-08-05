@@ -4,6 +4,7 @@
   "scripts": {
     "build": "lerna run build --parallel",
     "lint": "lerna run lint --parallel",
+    "lint:fix": "lerna run lint:fix --parallel",
     "test": "lerna run test --parallel",
     "test:sizes": "lerna run test:sizes --parallel",
     "postinstall": "lerna bootstrap",
