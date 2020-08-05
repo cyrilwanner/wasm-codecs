@@ -19,6 +19,8 @@ describe('gifsicle', () => {
   // test all image sizes
   ['tiny', 'small', 'medium', 'large'].forEach((size) => {
     it(`encodes a ${size} image`, async () => {
+      jest.setTimeout(20000);
+      
       const data = getImageFile(`images/${size}.gif`);
       const originalSize = getFileSize(`images/${size}.gif`);
       const originalMetadata = await getImageMetadata(`images/${size}.gif`);
