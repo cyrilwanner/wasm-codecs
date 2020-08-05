@@ -1,4 +1,4 @@
-import { initTestUtils, getImageFile, getFileSize, getImageMetadata } from '@wasm-codecs/test-utils';
+import { initTestUtils, getImageFile, getFileSize } from '@wasm-codecs/test-utils';
 import encode from '../lib';
 
 describe('gifsicle performance', () => {
