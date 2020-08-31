@@ -1,4 +1,4 @@
-FROM rust:1.45
+FROM rust:1.46
 
 RUN rustup target add wasm32-unknown-unknown
 RUN mkdir /opt/wabt && \
