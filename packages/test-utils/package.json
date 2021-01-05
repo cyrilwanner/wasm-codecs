@@ -17,13 +17,13 @@
   },
   "dependencies": {
     "rimraf": "^3.0.2",
-    "sharp": "^0.25.2"
+    "sharp": "^0.27.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.6",
     "@types/rimraf": "^3.0.0",
-    "@types/sharp": "^0.25.0",
+    "@types/sharp": "^0.27.0",
     "eslint": "^7.0.0",
     "jest": "^26.0.1",
     "typescript": "^3.9.2"
