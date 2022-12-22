@@ -1,4 +1,5 @@
-FROM trzeci/emscripten:1.39.18-upstream
+ARG EMSCRIPTEN_VERSION=3.1.28
+FROM emscripten/emsdk:${EMSCRIPTEN_VERSION}
 
 RUN apt-get update && \
   apt-get install -y \
